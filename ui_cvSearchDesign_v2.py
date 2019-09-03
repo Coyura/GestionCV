@@ -1,0 +1,96 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'cvSearchDesign_v2.ui',
+# licensing of 'cvSearchDesign_v2.ui' applies.
+#
+# Created: Tue Sep  3 12:13:23 2019
+#      by: pyside2-uic  running on PySide2 5.13.0
+#
+# WARNING! All changes made in this file will be lost!
+
+from PySide2 import QtCore, QtGui, QtWidgets
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(754, 643)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setObjectName("label")
+        self.verticalLayout_2.addWidget(self.label)
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_2.addWidget(self.label_3)
+        self.pBAjoutCV = QtWidgets.QPushButton(self.centralwidget)
+        self.pBAjoutCV.setObjectName("pBAjoutCV")
+        self.verticalLayout_2.addWidget(self.pBAjoutCV)
+        self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setRowCount(0)
+        self.verticalLayout_2.addWidget(self.tableWidget)
+        self.horizontalLayout_2.addLayout(self.verticalLayout_2)
+        self.line = QtWidgets.QFrame(self.centralwidget)
+        self.line.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.horizontalLayout_2.addWidget(self.line)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout.addWidget(self.label_2)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.lEKeyWord = QtWidgets.QLineEdit(self.centralwidget)
+        self.lEKeyWord.setText("")
+        self.lEKeyWord.setObjectName("lEKeyWord")
+        self.horizontalLayout.addWidget(self.lEKeyWord)
+        self.pBAddKeyWord = QtWidgets.QPushButton(self.centralwidget)
+        self.pBAddKeyWord.setObjectName("pBAddKeyWord")
+        self.horizontalLayout.addWidget(self.pBAddKeyWord)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.tWKeyWord = QtWidgets.QTableWidget(self.centralwidget)
+        self.tWKeyWord.setObjectName("tWKeyWord")
+        self.tWKeyWord.setColumnCount(0)
+        self.tWKeyWord.setRowCount(0)
+        self.verticalLayout.addWidget(self.tWKeyWord)
+        self.pBResearch = QtWidgets.QPushButton(self.centralwidget)
+        self.pBResearch.setObjectName("pBResearch")
+        self.verticalLayout.addWidget(self.pBResearch)
+        self.tWResults = QtWidgets.QTableWidget(self.centralwidget)
+        self.tWResults.setObjectName("tWResults")
+        self.tWResults.setColumnCount(0)
+        self.tWResults.setRowCount(0)
+        self.verticalLayout.addWidget(self.tWResults)
+        self.pBNewRequest = QtWidgets.QPushButton(self.centralwidget)
+        self.pBNewRequest.setObjectName("pBNewRequest")
+        self.verticalLayout.addWidget(self.pBNewRequest)
+        self.horizontalLayout_2.addLayout(self.verticalLayout)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 754, 21))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "CVSearch", None, -1))
+        self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "Choisir CV (pdf, docx, pptx ou txt) :", None, -1))
+        self.pBAjoutCV.setText(QtWidgets.QApplication.translate("MainWindow", "Ajout Liste CV", None, -1))
+        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Keyword :", None, -1))
+        self.pBAddKeyWord.setText(QtWidgets.QApplication.translate("MainWindow", "Ajout Keyword", None, -1))
+        self.pBResearch.setText(QtWidgets.QApplication.translate("MainWindow", "Recherche", None, -1))
+        self.pBNewRequest.setText(QtWidgets.QApplication.translate("MainWindow", "Nouvelle ", None, -1))
+
