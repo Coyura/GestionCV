@@ -4,7 +4,8 @@ from PySide2.QtWidgets import (QLabel,QListWidgetItem, QApplication, QFileDialog
 from PySide2.QtGui import QPixmap
 from PySide2.QtCore import Qt
 from tika import parser
-from ui_cvSearchDesign_v2 import Ui_MainWindow
+import re
+from ui_cvSearchDesign_v4 import Ui_MainWindow
 
 class MainWindow(QMainWindow):
 
@@ -38,17 +39,10 @@ class MainWindow(QMainWindow):
         self.ui.tWResults.setColumnWidth(1, 150)
 
     def ajoutCV (self):
-        # self.ui.tableWidget.clear()
-        # self.ui.tableWidget.setColumnCount(1)
-        # self.ui.tableWidget.setColumnWidth(0, 300)
-        # self.ui.tableWidget.setHorizontalHeaderLabels(['Liste des CVs'])
         newFiles = QFileDialog.getOpenFileNames(self, "Choix CVs", "/home", "CV (*pptx *pdf *docx)")
         n = len(newFiles[0])
-        print(n)
         for f in range(0,n):
-            print(newFiles[0][f])
             fInfo = QFileInfo(newFiles[0][f])
-            print(fInfo)
             fShortName = fInfo.baseName()
             addCV = QListWidgetItem(fShortName)
             addCV.setToolTip(newFiles[0][f])
@@ -69,7 +63,6 @@ class MainWindow(QMainWindow):
             self.ui.tWKeyWord.setItem(0, 0, QTableWidgetItem(keyW))
         else :
             lgTable = self.ui.tWKeyWord.rowCount()
-            print (lgTable)
             self.ui.tWKeyWord.insertRow(lgTable)
             self.ui.tWKeyWord.setItem(lgTable, 0, QTableWidgetItem(keyW))
         self.ui.lEKeyWord.clear()
@@ -80,7 +73,7 @@ class MainWindow(QMainWindow):
         for i in range (0, n):
             keyW = self.ui.tWKeyWord.item(i, 0).text()
             keyW = keyW.lower()
-            keyW = " " + keyW + " "
+            # keyW = " " + keyW + [^a-z]
             listKW.append(keyW)
         return (listKW)
 
@@ -88,7 +81,6 @@ class MainWindow(QMainWindow):
         self.ui.tWResults.setRowCount(0)
         kWToTest = self.listKeyWord()
         klen = len(kWToTest)
-        print ("liste à tester", kWToTest)
         n = self.ui.tableWidget.rowCount()
         for cv in range (0, n):
             nomCV = self.ui.tableWidget.item(cv, 0).text()
@@ -100,7 +92,10 @@ class MainWindow(QMainWindow):
             cvAcompare = cvTransfText.lower()
             cptKw = 0
             for k in range (0, klen) :
-                if kWToTest[k] in cvAcompare:
+                kWSearch=kWToTest[k]
+                # (r'{}\[^a-z]'.format(kWSearch))
+                if re.search(r'\W{}\W'.format(kWSearch), cvAcompare) != None :
+                # if kWSearch in cvAcompare:
                     cptKw += 1
             if cptKw !=0 :
                 if self.ui.tWResults.rowCount() == 0:
@@ -109,10 +104,10 @@ class MainWindow(QMainWindow):
                     self.ui.tWResults.setItem(0,1, QTableWidgetItem(str(cptKw)))
                 else:
                     lgTable = self.ui.tWResults.rowCount()
-                    print(lgTable)
                     self.ui.tWResults.insertRow(lgTable)
                     self.ui.tWResults.setItem(lgTable, 0, QTableWidgetItem(nomCV))
                     self.ui.tWResults.setItem(lgTable, 1, QTableWidgetItem(str(cptKw)))
+        self.ui.tWResults.sortItems(1,order = Qt.DescendingOrder)
 
     def newRequest(self):
         self.ui.tableWidget.clear()
